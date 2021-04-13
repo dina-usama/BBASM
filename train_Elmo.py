@@ -1,8 +1,4 @@
-# -*- coding: utf-8 -*-
-# @Author  : Bill Bao
-# @File    : train.py
-# @Software: PyCharm and Spyder
-# @Environment : Python 3.6+
+
 # @Reference1 : https://zhuanlan.zhihu.com/p/31638132
 # @Reference2 : https://github.com/likejazz/Siamese-LSTM
 # @Reference3 : https://github.com/LuJunru/Sentences_Pair_Similarity_Calculation_Siamese_LSTM
@@ -13,10 +9,6 @@ from __future__ import division
 from __future__ import print_function
 import sys
 
-sys.path.append('C:/Users/dina_/Desktop/final/HHH-An-Online-Question-Answering-System-for-Medical-Questions/Bert')
-
-sys.path.append(
-    'C:/Users/dina_/Desktop/final/HHH-An-Online-Question-Answering-System-for-Medical-Questions/Bert Fixed/bert-sentence-encoder')
 
 import tensorflow as tf
 from time import time
@@ -31,35 +23,14 @@ from keras.layers import Input, Embedding, LSTM, Dense, Flatten, Activation, Rep
 from keras.layers.merge import multiply, concatenate
 import keras.backend as K
 from keras.engine import Layer
-# from tf.compat.v1.keras import backend as K
-# K.set_session()
-
-# import tensorflow.compat.v1 as tf
 import keras.layers as layers
 
-# tf.disable_v2_behavior()
-# tf.compat.v1.disable_eager_execution()
-# from BertTuned import get_features
-# tf.disable_eager_execution()
-# tf.compat.v1.enable_eager_execution()
-# from AttentionLayer import AttentionLayer
 
 
 from AttentionLayer import AttentionLayer
 from util import make_w2v_embeddings, split_and_zero_padding, ManDist
 
 import tensorflow_hub as hub
-# from BertEncoder import BertSentenceEncoder
-# tf.compat.v1.keras.backend
-
-'''pip
-本配置文件用于训练孪生网络
-'''
-
-# ------------------预加载------------------ #
-
-
-
 
 
 
@@ -67,42 +38,25 @@ TRAIN_CSV = 'C:/Users/dina_/Desktop/final/HHH-An-Online-Question-Answering-Syste
 
 flag = 'en'
 embedding_path = 'C:/Users/dina_/Desktop/final/HHH-An-Online-Question-Answering-System-for-Medical-Questions/GoogleNews-vectors-negative300 .bin.gz'
-embedding_dim = 300
-# max_seq_length = 10
+
+
 max_seq_length = 72
 savepath = 'C:/Users/dina_/Desktop/Embeddings results/Elmo embeddings/model1.h5'
 
 train_df = pd.read_csv(TRAIN_CSV, encoding='gb18030')
 print('loaded data')
 
-
-
-
-
-
-
-# 加载词向量
-
-# 读取并加载训练集
-#
-# print(train_df['question1'])
-# for q in ['question1', 'question2']:
-#     train_df[q + '_n'] = train_df[q]
-
-
-
-# X = train_df[['question1_n', 'question2_n']]
 elmo = hub.Module("https://tfhub.dev/google/elmo/3", trainable=True)
 
 
-def text_to_word_list(flag, text):  # 文本分词
+def text_to_word_list(flag, text):  
     text = str(text)
     text = text.lower()
 
     if flag == 'cn':
         pass
     else:
-        # 英文文本下的文本清理规则
+     
         import re
         text = re.sub(r"[^A-Za-z0-9^,!.\/'+-=]", " ", text)
         text = re.sub(r"what's", "what is ", text)
@@ -160,8 +114,8 @@ Y = train_df['is_duplicate']
 X_train, X_validation, Y_train, Y_validation = train_test_split(X, Y, test_size=0.2)
 # print(X_train.head())
 
-X= X_train[['question1', 'question2']][0:320]# dataset shortened
-X_v= X_validation[['question1', 'question2']][0:80]# dataset shortened
+X= X_train[['question1', 'question2']][0:320]# dataset shortened for trials
+X_v= X_validation[['question1', 'question2']][0:80]# dataset shortened for trials
 
 print("loaded training and validation data")
 Y_train=Y_train[0:320]
@@ -314,16 +268,9 @@ print("Done Elmo_test_question2",elmo_test_question2.shape)
 
 
 
-
-
-
-# X_train = split_and_zero_padding(X_train, max_seq_length)
-# X_validation = split_and_zero_padding(X_validation, max_seq_length)
-
-# 将标签转化为数值
 Y_train = Y_train.values
 Y_validation = Y_validation.values
-# assert X_train['left'].shape == X_train['right'].shape
+
 assert X['question1'].shape == X['question2'].shape
 assert len(X['question1']) == len(Y_train)
 
@@ -354,81 +301,7 @@ assert len(X['question1']) == len(Y_train)
 #         return (input_shape[0], self.dimensions)
 
 
-
-# 确认数据准备完毕且正确
-
-
-# -----------------基础函数------------------ #
-
-
-# def shared_model_HBDA(_input):
-
-    # 词向量化
-    # embedded = Embedding(len(embeddings), embedding_dim, weights=[embeddings], input_shape=(max_seq_length,),
-    #                     trainable=False)(_input)
-
-    # embedding_layer = Embedding(len(embeddings) + 1,
-    #                             embedding_dim,
-    #                             input_length=max_seq_length)
-    #
-    # print(embedding_layer)
-    # print(type(embedding_layer))
-    #
-    # embedded_sequences = embedding_layer(_input)
-    # print('embedded sequence is ', embedded_sequences)
-    # print('this is the first embedding layer', embedded_sequences)
-    # print('this is size of the first embedding layer', embedded_sequences.shape())
-
-    # input_layer = Input(shape=(1,), dtype="string", name="Input_layer")
-    # print('here 1')
-    # embedding_layer = Lambda(ELMoEmbedding, output_shape=(1024,))(_input)
-    # # embedding_layer =ElmoEmbeddingLayer()(_input)
-    # print('here 2 after embedding_layer')
-    # print(embedding_layer.shape)
-    # BiLSTM = Bidirectional(layers.LSTM(1024, return_sequences=False, recurrent_dropout=0.2, dropout=0.2),name="BiLSTM")(embedding_layer)
-    # # print('here 3 after bilstm')
-    #
-    # Dense_layer_1=Dense(8336, activation='relu')(BiLSTM)
-    # Dropout_layer_1 = Dropout(0.5)(Dense_layer_1)
-    # Dense_layer_2 = Dense(4168, activation='relu')(Dropout_layer_1)
-    # Dropout_layer_2 = Dropout(0.5)(Dense_layer_2)
-    # output_layer = Dense(1, activation='sigmoid')(Dropout_layer_2)
-
-
-    # dense = Dense(256, activation='relu')(embedding_layer)
-    # print(dense.shape)
-    # BiLSTM = Bidirectional(LSTM(100, return_sequences=True))(dense)
-    #
-    # l_dense = TimeDistributed(Dense(200))(BiLSTM)
-    # print("here: ", type(l_dense))
-    #
-    # # l_att = AttentionLayer()(l_dense)
-    # print('here 4 after attention')
-
-    # 单层Bi-LSTM
-    # activations = Bidirectional(LSTM(n_hidden, return_sequences=True), merge_mode='concat')(embedded)
-
-    # dropout
-    # activations = Dropout(0.5)(activations)
-
-    # Words level attention model
-    # word_dense = Dense(1, activation='relu', name='word_dense')(activations)
-    # word_att,word_coeffs = AttentionLayer(EMBED_SIZE,True,name='word_attention')(word_dense)
-
-    # Attention
-    # attention = TimeDistributed(Dense(1, activation='tanh'))(activations)
-    # attention = Flatten()(attention)
-    # attention = Activation('softmax')(attention)
-    # attention = RepeatVector(n_hidden * 2)(attention)
-    # attention = Permute([2, 1])(attention)
-    # sent_representation = dot([activations, attention],axes=1)
-    # dropout
-    # sent_representation = Dropout(0.1)(sent_representation)
-
-    # return output_layer
-
-
-def shared_model_HBDA(_input):
+def shared_model_Elmo(_input):
 
 
 
@@ -446,10 +319,9 @@ def shared_model_HBDA(_input):
     return l_att
 
 
-# -----------------主函数----------------- #
 
 if __name__ == '__main__':
-    # 超参
+ 
     batch_size = 1
     n_epoch = 110
     n_hidden = 50
@@ -460,12 +332,11 @@ if __name__ == '__main__':
     right_input = Input(shape=(max_seq_length,1024,), dtype="float32")
     # print('this is right inout', right_input)
     # right_input = Input(shape=(1,), dtype='float32')
-    left_sen_representation = shared_model_HBDA(left_input)
+    left_sen_representation = shared_model_Elmo(left_input)
     # print('left snetcen presentation', left_sen_representation)
-    right_sen_representation = shared_model_HBDA(right_input)
+    right_sen_representation = shared_model_Elmo(right_input)
 
-    # 引入曼哈顿距离，把得到的变换concat上原始的向量再通过一个多层的DNN做了下非线性变换、sigmoid得相似度
-    # 没有使用https://zhuanlan.zhihu.com/p/31638132中提到的马氏距离，尝试了曼哈顿距离、点乘和cos，效果曼哈顿最好
+
     man_distance = ManDist()([left_sen_representation, right_sen_representation])
     sen_representation = concatenate([left_sen_representation, right_sen_representation, man_distance])
     similarity = Dense(1, activation='sigmoid')(Dense(2)(Dense(4)(Dense(16)(sen_representation))))
@@ -475,10 +346,7 @@ if __name__ == '__main__':
     model.summary()
 
     training_start_time = time()
-    # malstm_trained = model.fit( [ X_train['left'], X_train['right']], Y_train,
-    #                            batch_size=batch_size, epochs=n_epoch,
-    #                            validation_data=(
-    #                            [X_validation['left'], X_validation['right']], Y_validation))
+    
 
     malstm_trained = model.fit([elmo_train_question1, elmo_train_question2], Y_train,
                                steps_per_epoch=batch_size, epochs=n_epoch,

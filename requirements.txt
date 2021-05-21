@@ -1,0 +1,120 @@
+-rpcio @ file:///C:/ci/grpcio_1597406403308/work
+absl-py @ file:///tmp/build/80754af9/absl-py_1607439979954/work
+aiohttp @ file:///C:/ci/aiohttp_1602530358780/work
+astor==0.8.1
+astunparse==1.6.3
+async-timeout==3.0.1
+attrs @ file:///tmp/build/80754af9/attrs_1600298409949/work
+bert==2.2.0
+bert-serving-client==1.10.0
+bert-serving-server==1.10.0
+bert-tensorflow==1.0.1
+bert-tokenizer==0.1.5
+blinker==1.4
+boto==2.49.0
+boto3==1.9.66
+botocore==1.12.67
+brotlipy==0.7.0
+cachetools @ file:///tmp/build/80754af9/cachetools_1596822027882/work
+certifi==2020.12.5
+cffi @ file:///C:/ci/cffi_1600699250966/work
+chardet==3.0.4
+click==7.1.2
+cryptography @ file:///C:/ci/cryptography_1601046913206/work
+cycler==0.10.0
+dataclasses==0.6
+docutils==0.16
+erlastic==2.0.0
+filelock==3.0.12
+flatbuffers==1.12
+future==0.18.2
+gast==0.2.2
+gensim==3.8.0
+google-api-core @ file:///C:/ci/google-api-core-split_1601307128777/work
+google-auth @ file:///tmp/build/80754af9/google-auth_1604100403705/work
+google-auth-oauthlib @ file:///tmp/build/80754af9/google-auth-oauthlib_1603929124518/work
+google-cloud-core @ file:///tmp/build/80754af9/google-cloud-core_1602864831599/work
+google-cloud-storage @ file:///tmp/build/80754af9/google-cloud-storage_1601307969662/work
+google-crc32c @ file:///C:/ci/google-crc32c_1601300962127/work
+google-pasta==0.2.0
+google-resumable-media @ file:///tmp/build/80754af9/google-resumable-media_1601995638063/work
+googleapis-common-protos @ file:///C:/ci/googleapis-common-protos-feedstock_1600455733359/work
+GPUtil==1.4.0
+grpcio==1.32.0
+h5py==2.10.0
+idna @ file:///tmp/build/80754af9/idna_1593446292537/work
+importlib-metadata @ file:///tmp/build/80754af9/importlib-metadata_1602276842396/work
+jmespath @ file:///tmp/build/80754af9/jmespath_1594304593830/work
+joblib @ file:///tmp/build/80754af9/joblib_1601912903842/work
+Keras==2.2.4
+Keras-Applications @ file:///tmp/build/80754af9/keras-applications_1594366238411/work
+Keras-Preprocessing==1.1.2
+kiwisolver @ file:///C:/ci/kiwisolver_1603996595157/work
+Markdown @ file:///C:/ci/markdown_1603216569530/work
+matplotlib @ file:///C:/ci/matplotlib-base_1603356257853/work
+mkl-fft==1.2.0
+mkl-random==1.0.4
+mkl-service==2.3.0
+mock==4.0.3
+multidict @ file:///C:/ci/multidict_1600456486794/work
+nltk @ file:///tmp/build/80754af9/nltk_1592496090529/work
+numpy==1.19.5
+oauthlib==3.1.0
+olefile==0.46
+opt-einsum==3.3.0
+packaging==20.4
+pandas @ file:///C:/ci/pandas_1602088205210/work
+params==0.9.0
+Pillow @ file:///C:/ci/pillow_1603821929285/work
+protobuf==3.13.0
+pyasn1==0.4.8
+pyasn1-modules==0.2.8
+pycparser @ file:///tmp/build/80754af9/pycparser_1594388511720/work
+PyJWT==1.7.1
+pyOpenSSL @ file:///tmp/build/80754af9/pyopenssl_1594392929924/work
+pyparsing==2.4.7
+pyreadline==2.1
+PySocks @ file:///C:/ci/pysocks_1594394709107/work
+python-dateutil==2.8.1
+pytorch-transformers==1.2.0
+pytz==2020.1
+PyYAML==5.3.1
+pyzmq==22.0.2
+regex @ file:///C:/ci/regex_1602782614108/work
+requests @ file:///tmp/build/80754af9/requests_1592841827918/work
+requests-oauthlib==1.3.0
+rsa @ file:///tmp/build/80754af9/rsa_1596998415516/work
+s3transfer==0.1.13
+sacremoses==0.0.43
+scikit-learn @ file:///C:/ci/scikit-learn_1598376983131/work
+scipy @ file:///C:/ci/scipy_1597686737426/work
+sentencepiece==0.1.91
+simple-elmo==0.6.0
+six==1.15.0
+smart-open==2.0.0
+tb-nightly==1.14.0a20190301
+tensorboard==1.15.0
+tensorboard-plugin-wit==1.6.0
+tensorflow==1.15.0
+tensorflow-estimator==1.15.1
+tensorflow-gpu==2.4.0
+tensorflow-gpu-estimator==2.3.0
+tensorflow-hub==0.11.0
+termcolor==1.1.0
+tf-estimator-nightly==1.14.0.dev2019030115
+threadpoolctl @ file:///tmp/tmp9twdgx9k/threadpoolctl-2.1.0-py3-none-any.whl
+tokenizers==0.8.1rc1
+torch==1.7.0+cpu
+torchaudio==0.7.0
+torchvision==0.8.1+cpu
+tornado==6.0.4
+tqdm @ file:///tmp/build/80754af9/tqdm_1607369919789/work
+transformers==3.0.2
+typing-extensions==3.7.4.3
+urllib3==1.24.3
+Werkzeug==0.16.1
+win-inet-pton==1.1.0
+wincertstore==0.2
+wrapt==1.12.1
+yarl @ file:///C:/ci/yarl_1602679793616/work
+zipp @ file:///tmp/build/80754af9/zipp_1604001098328/work

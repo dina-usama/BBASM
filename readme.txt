@@ -3,7 +3,7 @@
 
 This respository contains the source codes for the experiments of the Bert-BiLSTM Attention Similarity Model (BBASM). There is also the requirements.txt that contains the versions of all the packages needed to run the files. This model uses BERT as an embedding layer to convert the questions to their respective embedding, and uses BiLSTM-Attention for feature extraction, giving more weight to important parts in the embeddings.  The function of one over the exponential function of the Manhattan distance is used to calculate the semantic similarity score. The model achieves an accuracy  of 84.45% in determining whether two questions from the Quora duplicate dataset are similar or not.
 
-There are three main experiments that lead to this similarity model as shown below. 
+A- Experiments
 
 I- Exploration of different word embeddings
 
@@ -38,7 +38,6 @@ HBAM(Word2Vec)                      81.2%
 FastText                            81.44%
 Elmo                                72.5%
 BERT                                84.45%
-
 
 
 
@@ -104,3 +103,18 @@ Model Used        Accuracy       Precision     Recall      F1 Score
 HBAM              81.2%          78.87%        84.93%      81.79%
 BERT-BiGRU        83.3%          86.37%        77.02%      81.43%
 BBASM             84.45%         81.96%        87.44%      84.61%
+
+
+
+
+
+B- General Setup 
+
+1) Download the Quora Duplicate Dataset using this link: https://quoradata.quora.com/First-Quora-Dataset-Release-Question-Pairs
+2) Download GoogleNews-vectors-negative300 .bin needed for train_word2vec.py
+3) Download wiki-news-300d-1M  needd for train_FastText.py
+4) Download google/bert_uncased_L-12_H-768_A-12
+4) Set up the project on PyCharm and create a tensor flow virtual environment then dowload the necessay packages using the requirements.txt file.
+5) For train_BERT.py and BERT_BiGRU.py , the BERT server for the (bert-as-service) needs to start first before starting the training by typing the following command in the shell: bert-serving-start -pooling_strategy NONE -model_dir "local path of google/bert_uncased_L-12_H-768_A-12" -num_worker=1
+6) For the rest of the files, simply run the program and the training will start. 
+

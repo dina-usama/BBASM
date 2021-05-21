@@ -2,6 +2,7 @@
 # @Reference1 : https://zhuanlan.zhihu.com/p/31638132
 # @Reference2 : https://github.com/likejazz/Siamese-LSTM
 # @Reference3 : https://github.com/LuJunru/Sentences_Pair_Similarity_Calculation_Siamese_LSTM
+# @Reference4: https://github.com/hanxiao/bert-as-service
 
 
 from __future__ import absolute_import

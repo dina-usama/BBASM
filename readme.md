@@ -45,10 +45,45 @@ pretrained model). The hyperparameters used in both were as follows: n epochs=9,
 2) train_BIGRU.py: uses word2vec embeddings followed by BiGRU and Attention layer as feature extraction. 
 
 
-Results 
+The results are sumamrized in the following tabe.  
 
 |Feature Extractor    |              Evaluation Accuracy  |   Speed of Training (Seconds for 9 epochs) |
 | ----------------- | ------------------------ | ---------------------------------|
 |Bi-GRU+Attention        |           82%       |               39.8 |
 |BiLSTM+Attention    |              81.2%    |                50 |
+
+
+
+
+III- Determing whether BERT-BiGRU or BERT-BiLSTM is more accurate (BERT BiLSTM Attention Similarity Model (BBASM) )
+------------------------------------------------------------------------------------------------------------------
+
+Experimental Setup: Based on the aforementioned two experiments, two conclusions were reached. The first one is using BERT as the embedding layer which is then fed to the BiLSTM-Attention layer for feature extraction yields a higher accuracy compared to the other mentioned embedding techniques. The second conclusion is using BiGRU-Attention as feature extractor, compared to BiLSTM-Attention, results in faster training and slight improvement in the accuracy. Based on these conclusions, our initial hypothesis was that
+a similarity model that incorporates BERT as an embedding layer, followed by BiGRU-attention for feature extraction, should yield a higher accuracy compared to HBAM and BERT+BiLSTM similarity models. In this experiment, the aforementioned hypothesis was tested. The training and testing were done on the same Quora Duplicate dataset used in HBAM to facilitate comparison. The dataset was divided 9:1 for training and testing.
+
+1) BERT_BiGRU.py : uses BERT embeddings followed by BiGRU and Attention layer as feature extraction. 
+2) train_BERT.py: uses BERT embeddings followed by BiLSTM and Attention layer as feature extraction.
+
+The results are summarized in the following table.
+
+|Model Used   |     Accuracy   |    Precision  |   Recall  |    F1 Score |
+| --------- |   ---------- | ----------- | -------------- | ---------- |
+| HBAM     |         81.2%    |      78.87%   |     84.93%  |    81.79% |
+| BERT-BiGRU    |    83.3%   |       86.37%  |      77.02%  |    81.43% |
+|BBASM    |         84.45%   |      81.96%   |     87.44%  |    84.61% |
+
+
+
+
+
+B- General Setup
+----------------
+
+1) Download the Quora Duplicate Dataset using this link: https://quoradata.quora.com/First-Quora-Dataset-Release-Question-Pairs
+2) Download GoogleNews-vectors-negative300 .bin needed for train_word2vec.py
+3) Download wiki-news-300d-1M  needed for train_FastText.py
+4) Download google/bert_uncased_L-12_H-768_A-12
+4) Set up the project on PyCharm and create a tensor flow virtual environment then dowload the necessay packages using the requirements.txt file.
+5) For train_BERT.py and BERT_BiGRU.py , the BERT server for the (bert-as-service) needs to start first before starting the training by typing the following command in the shell: bert-serving-start -pooling_strategy NONE -model_dir "local path of google/bert_uncased_L-12_H-768_A-12" -num_worker=1
+6) For the rest of the files, simply run the program and the training will start. 
 

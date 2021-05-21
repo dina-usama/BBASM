@@ -3,7 +3,7 @@
 # @Reference2 : https://github.com/likejazz/Siamese-LSTM
 # @Reference3 : https://github.com/LuJunru/Sentences_Pair_Similarity_Calculation_Siamese_LSTM
 
-# 基础包
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
@@ -190,7 +190,7 @@ print("Done BERT_test_question2",BERT_test_question2.shape)
 # print("Done BERT_test_question2",np.shape(BERT_test_question2))
 
 
-# 将标签转化为数值
+
 Y_train = Y_train.values
 Y_validation = Y_validation.values
 # assert X_train['left'].shape == X_train['right'].shape
@@ -222,7 +222,6 @@ def shared_model_BiGRU(_input):
     return l_att
 
 
-# -----------------主函数----------------- #
 
 if __name__ == '__main__':
    

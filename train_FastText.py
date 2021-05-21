@@ -3,7 +3,7 @@
 # @Reference2 : https://github.com/likejazz/Siamese-LSTM
 # @Reference3 : https://github.com/LuJunru/Sentences_Pair_Similarity_Calculation_Siamese_LSTM
 
-# 基础包
+
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function

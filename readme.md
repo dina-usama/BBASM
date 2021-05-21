@@ -16,7 +16,7 @@ earlier. This is basically a subset from the Quora duplicate dataset consisting 
 1) train_Elmo.py: uses Elmo embeddings followed by BiLSTM and Attention layer as feature extraction.
 2) train_FastText.py: uses FastText embeddings followed by BiLSTM and Attention layer as feature extraction.
 3) train_BERT.py: uses BERT embeddings followed by BiLSTM and Attention layer as feature extraction.
-4) train_word2vec.py: uses word2vec embeddings followed by BiLSTM and Attention layer as feature extraction. (HABM)
+4) train_word2vec.py: uses word2vec embeddings followed by BiLSTM and Attention layer as feature extraction. (HBAM)
 
 The results are summarized in the following table. 
 

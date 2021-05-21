@@ -26,4 +26,29 @@ The results are summarized in the following table.
 | FastText      |  81.44% |
 | Elmo     |   72.5% |
  | BERT      | 84.45% |
+ 
+ 
+ 
+ 
+ 
+II- Determining best feature extractor for text similarity model
+----------------------------------------------------------------
+
+Experimental Setup: The training and testing were done on the same Quora Duplicate dataset used in HBAM to allow comparison. The dataset was divided 9:1 for training
+and testing. The training section was further divided 8:2 for training and validation. The embedding layer remained constant to enable comparison (Word2Vec- Google’s word2vec
+pretrained model). The hyperparameters used in both were as follows: n epochs=9, max seq length=10. Both the HBAM and the BiGRU+Attention ran on a machine with the following specifications to enable the speed comparison as well:
+* 2.2 GHz Intel Core i7-8750H Six-Core
+* 8GB of DDR4 RAM — 1TB HDD + 128GB SSD
+* NVIDIA GeForce 1050 Ti (4GB GDDR5)
+
+1) train_word2vec.py: uses word2vec embeddings followed by BiLSTM and Attention layer as feature extraction. (HABM)
+2) train_BIGRU.py: uses word2vec embeddings followed by BiGRU and Attention layer as feature extraction. 
+
+
+Results 
+
+|Feature Extractor    |              Evaluation Accuracy  |   Speed of Training (Seconds for 9 epochs) |
+| ----------------- | ------------------------ | ---------------------------------|
+|Bi-GRU+Attention        |           82%       |               39.8 |
+|BiLSTM+Attention    |              81.2%    |                50 |
 

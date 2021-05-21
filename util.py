@@ -1,6 +1,6 @@
 
-# @Reference : https://github.com/likejazz/Siamese-LSTM
-
+# @Reference1 : https://github.com/likejazz/Siamese-LSTM
+# @Reference2: https://github.com/14H034160212/HHH-An-Online-Question-Answering-System-for-Medical-Questions
 
 from keras import backend as K
 from keras.layers import Layer

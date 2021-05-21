@@ -1,5 +1,5 @@
 
-								BERT BiLSTM-Attention Similarity Model
+						BERT BiLSTM-Attention Similarity Model
 
 This respository contains the source codes for the experiments of the Bert-BiLSTM Attention Similarity Model (BBASM).
 There are three main experiments that lead to this similarity model.
@@ -58,9 +58,9 @@ follows: n epochs=9, max seq length=10.
 Both the HBAM and the BiGRU+Attention ran on a machine
 with the following specifications to enable the speed
 comparison as well:
- 2.2 GHz Intel Core i7-8750H Six-Core
- 8GB of DDR4 RAM — 1TB HDD + 128GB SSD
- NVIDIA GeForce 1050 Ti (4GB GDDR5)
+* 2.2 GHz Intel Core i7-8750H Six-Core
+* 8GB of DDR4 RAM — 1TB HDD + 128GB SSD
+* NVIDIA GeForce 1050 Ti (4GB GDDR5)
 
 1) train_word2vec.py: uses word2vec embeddings followed by BiLSTM and Attention layer as feature extraction. (HABM)
 2) train_BIGRU.py: uses word2vec embeddings followed by BiGRU and Attention layer as feature extraction. 
